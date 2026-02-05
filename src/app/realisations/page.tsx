@@ -1,72 +1,86 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Filter } from "lucide-react";
+import { Building, Factory, Landmark, ArrowRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
-const categories = ["Tous", "Finance", "Industrie", "Commerce"];
-
-const projects = [
+const realisations = [
   {
     id: 1,
-    title: "Financement Centre Commercial Playce",
-    category: "Finance",
-    image: "https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=600&h=400&fit=crop",
-    description: "Structuration du financement pour un centre commercial de 25 000 m²",
-    value: "15 Milliards FCFA",
+    title: "Fourniture et Pose de Poteaux Bétons",
+    client: "AS BT",
+    category: "Industrie",
+    description: "Fourniture et installation de poteaux électriques en béton manufacturé pour le réseau électrique.",
+    services: ["Production de poteaux bétons", "Transport", "Pose et installation"],
+    icon: Factory,
+    status: "Réalisé",
   },
   {
     id: 2,
-    title: "Construction Résidence Les Jardins",
+    title: "Fourniture et Pose de Poteaux Bétons",
+    client: "ALEF Construction",
     category: "Industrie",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
-    description: "Fourniture de 50 000 m² de pavés et béton manufacturé",
-    value: "850 Millions FCFA",
+    description: "Projet de fourniture et installation de poteaux en béton pour infrastructure électrique.",
+    services: ["Fabrication de poteaux", "Livraison sur site", "Installation complète"],
+    icon: Factory,
+    status: "Réalisé",
   },
   {
     id: 3,
-    title: "Import Équipements Industriels",
-    category: "Commerce",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
-    description: "Import de machines industrielles depuis l'Europe",
-    value: "2.5 Milliards FCFA",
+    title: "Fourniture d'Agglos",
+    client: "SNTP",
+    category: "BTP",
+    description: "Fourniture d'agglos (parpaings) pour projet de construction.",
+    services: ["Production d'agglos", "Contrôle qualité", "Livraison"],
+    icon: Building,
+    status: "Réalisé",
   },
   {
     id: 4,
-    title: "Levée de Fonds Startup Tech",
-    category: "Finance",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop",
-    description: "Accompagnement levée de fonds Série A",
-    value: "3 Milliards FCFA",
+    title: "Travaux VRD",
+    client: "EKDS",
+    location: "N'Douci",
+    category: "BTP",
+    description: "Travaux de Voirie et Réseaux Divers (VRD) comprenant la construction d'infrastructures routières.",
+    services: ["Terrassement", "Voirie", "Réseaux divers", "Assainissement"],
+    icon: Landmark,
+    status: "En cours",
   },
   {
     id: 5,
-    title: "Aménagement Zone Industrielle",
-    category: "Industrie",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
-    description: "VRD et pavage de 15 hectares de zone industrielle",
-    value: "1.2 Milliards FCFA",
-  },
-  {
-    id: 6,
-    title: "Distribution Matériel Agricole",
-    category: "Commerce",
-    image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600&h=400&fit=crop",
-    description: "Fourniture de tracteurs et équipements agricoles",
-    value: "4 Milliards FCFA",
+    title: "Conception et Réalisation de Plans Architecturaux",
+    client: "Groupe CICBAD Holding",
+    category: "Architecture",
+    description: "Conception et réalisation de plans architecturaux pour projets immobiliers.",
+    services: ["Études préliminaires", "Plans architecturaux", "Suivi de réalisation"],
+    icon: Building,
+    status: "Réalisé",
   },
 ];
 
+const equipements = [
+  "Moule d'agglos",
+  "Moule de poteaux",
+  "Moule de caniveaux",
+  "Moule de claustra",
+];
+
+const produits = [
+  { name: "Poteaux électriques", description: "Différentes dimensions disponibles" },
+  { name: "Agglos / Parpaings", description: "Haute résistance pour construction" },
+  { name: "Claustrales", description: "Éléments décoratifs en béton" },
+  { name: "Pavés", description: "Pour aménagement extérieur" },
+  { name: "Caniveaux", description: "Évacuation des eaux" },
+  { name: "Bordures", description: "Délimitation de voies" },
+  { name: "Séparateurs de chaussée", description: "Sécurité routière" },
+  { name: "Tétrapodes", description: "Protection côtière" },
+  { name: "Dalots", description: "Ouvrages hydrauliques" },
+  { name: "Buses", description: "Canalisation" },
+];
+
 export default function RealisationsPage() {
-  const [activeCategory, setActiveCategory] = useState("Tous");
-
-  const filteredProjects =
-    activeCategory === "Tous"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
-
   return (
-    <>
+    <div>
       {/* HERO */}
       <section className="relative py-24 bg-[#1B2B5A]">
         <div className="absolute inset-0 opacity-10">
@@ -82,59 +96,71 @@ export default function RealisationsPage() {
             Nos <span className="text-[#B8923B]">Réalisations</span>
           </motion.h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Découvrez nos projets phares et success stories
+            Découvrez nos projets réalisés et en cours avec nos partenaires
           </p>
         </div>
       </section>
 
-      {/* FILTER & PROJECTS */}
+      {/* PROJETS */}
       <section className="py-20">
         <div className="container-premium">
-          {/* Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
-            <Filter size={20} className="text-gray-400" />
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 font-medium transition-all ${
-                  activeCategory === category
-                    ? "bg-[#1B2B5A] text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
+              Projets Réalisés
+            </h2>
+            <div className="gold-line mx-auto mb-6" />
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Une sélection de nos collaborations avec des entreprises de référence
+            </p>
           </div>
 
-          {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {realisations.map((projet, index) => (
               <motion.div
-                key={project.id}
+                key={projet.id}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-500"
+                className="bg-white shadow-lg border border-gray-100 overflow-hidden group hover:border-[#B8923B] transition-colors"
               >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-[#B8923B] text-white text-xs font-medium">
-                    {project.category}
-                  </div>
-                </div>
                 <div className="p-6">
-                  <h3 className="font-playfair text-lg font-semibold text-[#1B2B5A] mb-2">
-                    {project.title}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-14 h-14 bg-[#1B2B5A] flex items-center justify-center group-hover:bg-[#B8923B] transition-colors">
+                      <projet.icon className="text-white" size={28} />
+                    </div>
+                    <span className={`px-3 py-1 text-xs font-medium ${
+                      projet.status === "En cours" 
+                        ? "bg-orange-100 text-orange-600" 
+                        : "bg-green-100 text-green-600"
+                    }`}>
+                      {projet.status}
+                    </span>
+                  </div>
+                  
+                  <h3 className="font-playfair text-xl font-semibold text-[#1B2B5A] mb-2">
+                    {projet.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#B8923B] font-semibold">{project.value}</span>
+                  
+                  <p className="text-[#B8923B] font-medium mb-3">
+                    Client : {projet.client}
+                    {projet.location && <span className="text-gray-500"> • {projet.location}</span>}
+                  </p>
+                  
+                  <p className="text-gray-600 text-sm mb-4">
+                    {projet.description}
+                  </p>
+                  
+                  <div className="border-t border-gray-100 pt-4">
+                    <p className="text-sm font-medium text-[#1B2B5A] mb-2">Services fournis :</p>
+                    <ul className="space-y-1">
+                      {projet.services.map((service, idx) => (
+                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
+                          <CheckCircle size={14} className="text-[#B8923B]" />
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </motion.div>
@@ -142,6 +168,113 @@ export default function RealisationsPage() {
           </div>
         </div>
       </section>
-    </>
+
+      {/* PRODUITS BÉTON */}
+      <section className="py-20 bg-[#F8F9FA]">
+        <div className="container-premium">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
+              Nos Produits en Béton Manufacturé
+            </h2>
+            <div className="gold-line mx-auto mb-6" />
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Une gamme complète de produits en béton de haute qualité
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {produits.map((produit, index) => (
+              <motion.div
+                key={produit.name}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-white p-6 text-center shadow-md hover:shadow-lg transition-shadow"
+              >
+                <h3 className="font-semibold text-[#1B2B5A] mb-2">{produit.name}</h3>
+                <p className="text-gray-500 text-sm">{produit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ÉQUIPEMENTS */}
+      <section className="py-20">
+        <div className="container-premium">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-6">
+                Nos Équipements
+              </h2>
+              <div className="gold-line mb-6" />
+              <p className="text-gray-600 mb-8">
+                Notre siège technique à Yopougon est équipé de moules professionnels pour la production 
+                de béton manufacturé de haute qualité.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                {equipements.map((equipement, index) => (
+                  <motion.div
+                    key={equipement}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-center gap-3 p-4 bg-[#F8F9FA]"
+                  >
+                    <CheckCircle className="text-[#B8923B]" size={20} />
+                    <span className="text-[#1B2B5A] font-medium">{equipement}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-br from-[#1B2B5A] to-[#2a3f7a] p-8 text-white"
+            >
+              <h3 className="font-playfair text-2xl font-semibold mb-6">
+                Siège Technique
+              </h3>
+              <div className="space-y-4">
+                <p className="text-white/80">
+                  <strong className="text-[#B8923B]">Localisation :</strong><br />
+                  Yopougon, Cité ADO<br />
+                  Zone Industrielle, Ebimpé
+                </p>
+                <p className="text-white/80">
+                  <strong className="text-[#B8923B]">Capacités :</strong><br />
+                  Production de tous types de béton manufacturé selon les normes en vigueur.
+                </p>
+                <p className="text-white/80">
+                  <strong className="text-[#B8923B]">Livraison :</strong><br />
+                  Transport et livraison sur toute la Côte d&apos;Ivoire.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-[#1B2B5A] to-[#2a3f7a]">
+        <div className="container-premium text-center">
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-6">
+            Un Projet en Vue ?
+          </h2>
+          <p className="text-white/80 max-w-2xl mx-auto mb-8">
+            Contactez-nous pour discuter de vos besoins et obtenir un devis personnalisé.
+          </p>
+          <Link href="/contact" className="btn-gold inline-flex items-center gap-2">
+            Demander un Devis
+            <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

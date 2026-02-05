@@ -64,9 +64,9 @@ export default function Header() {
               <Phone size={14} />
               (+225) 27 24 33 64 04
             </a>
-            <a href="mailto:contact@menafrica.ci" className="flex items-center gap-2 hover:text-[#B8923B] transition-colors">
+            <a href="mailto:MENAFRICA@company-sites.net" className="flex items-center gap-2 hover:text-[#B8923B] transition-colors">
               <Mail size={14} />
-              contact@menafrica.ci
+              MENAFRICA@company-sites.net
             </a>
           </div>
           <div className="flex items-center gap-6">

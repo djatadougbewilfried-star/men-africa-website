@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Loader2 } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, Loader2, Building2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
@@ -112,7 +112,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-[#1B2B5A] mb-1">Email</h3>
-                    <p className="text-gray-600">contact@menafrica.ci</p>
+                    <p className="text-gray-600">MENAFRICA@company-sites.net</p>
                   </div>
                 </div>
 
@@ -121,10 +121,24 @@ export default function ContactPage() {
                     <MapPin className="text-[#B8923B]" size={24} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Adresse</h3>
+                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Siège Social</h3>
                     <p className="text-gray-600">
                       Cocody, Riviera Palmeraie<br />
                       21 BP 1831 Abidjan 21<br />
+                      Côte d&apos;Ivoire
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-[#1B2B5A]/5 flex items-center justify-center shrink-0">
+                    <Building2 className="text-[#B8923B]" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Siège Technique</h3>
+                    <p className="text-gray-600">
+                      Yopougon, Cité ADO<br />
+                      Zone Industrielle, Ebimpé<br />
                       Côte d&apos;Ivoire
                     </p>
                   </div>

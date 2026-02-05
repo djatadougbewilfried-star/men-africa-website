@@ -103,7 +103,7 @@ export default function Footer() {
               Votre partenaire stratégique multisectoriel en Afrique. Finance, Industrie et Commerce au service de votre réussite.
             </p>
             <p className="text-[#B8923B] font-semibold italic mb-6">
-              &quot;Faites Briller Votre Lumière&quot;
+              &quot;Faite briller votre lumière&quot;
             </p>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
@@ -116,11 +116,18 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={18} className="text-[#B8923B] shrink-0" />
-                <span>contact@menafrica.ci</span>
+                <span>MENAFRICA@company-sites.net</span>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#B8923B] shrink-0 mt-0.5" />
-                <span>Cocody, Riviera Palmeraie<br />21 BP 1831 Abidjan 21</span>
+                <div>
+                  <p className="font-medium">Siège Social :</p>
+                  <p>Cocody, Riviera Palmeraie</p>
+                  <p>21 BP 1831 Abidjan 21</p>
+                  <p className="font-medium mt-2">Siège Technique :</p>
+                  <p>Yopougon, Cité ADO</p>
+                  <p>Zone Industrielle, Ebimpé</p>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <Clock size={18} className="text-[#B8923B] shrink-0" />
@@ -176,6 +183,7 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4">
         <div className="container-premium">
           <div className="text-center text-white/50 text-xs space-y-1">
+            <p>SARL U au Capital de 5 000 000 FCFA | Gérant : MENDO GABRIEL ARNOLD</p>
             <p>RCCM : CI-ABJ-03-2024-B13-02779 | N° CC : 2401009 J | Régime : TEE</p>
             <p>Banque : BNI - Compte N° 000113950008</p>
           </div>
