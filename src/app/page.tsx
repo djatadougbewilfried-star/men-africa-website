@@ -1,381 +1,211 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
-import { 
-  ArrowRight, 
-  Briefcase, 
-  Factory, 
-  ShoppingCart, 
-  Phone,
-  Award,
-  Users,
-  TrendingUp
-} from "lucide-react";
+import Link from "next/link";
 
-const poles = [
-  {
-    icon: Briefcase,
-    title: "Finance & Investissement",
-    description: "Courtage bancaire, assurance, levée de fonds et structuration de projets pour accélérer votre croissance.",
-    href: "/finance",
-    color: "from-blue-600 to-blue-800",
-  },
-  {
-    icon: Factory,
-    title: "Industrie & Béton",
-    description: "Production de béton manufacturé de qualité : poteaux, agglos, pavés, caniveaux et bien plus.",
-    href: "/industrie",
-    color: "from-amber-600 to-amber-800",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Commerce & Supply",
-    description: "Import-export, commerce général et distribution pour répondre à tous vos besoins.",
-    href: "/commerce",
-    color: "from-emerald-600 to-emerald-800",
-  },
-];
-
-const cataloguePreview = [
-  { name: "Poteaux Électriques", image: "/catalogue/poteau-electrique.jpg" },
-  { name: "Agglos", image: "/catalogue/agglos.jpg" },
-  { name: "Pavés", image: "/catalogue/paves.jpg" },
-  { name: "Caniveaux", image: "/catalogue/caniveau-rectangulaire.jpg" },
-  { name: "Claustra", image: "/catalogue/claustra.jpg" },
-  { name: "Bordures", image: "/catalogue/bordures-a2.jpg" },
-];
-
-const stats = [
-  { value: "5M", label: "Capital FCFA" },
-  { value: "100+", label: "Projets réalisés" },
-  { value: "50+", label: "Clients satisfaits" },
-  { value: "3", label: "Pôles d'activité" },
-];
-
-const clients = [
-  "AS BT",
-  "ALEF Construction", 
-  "SNTP",
-  "EKDS",
-  "Groupe CICBAD Holding",
-];
-
-export default function HomePage() {
+export default function Home() {
   return (
-    <div>
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center bg-[#1B2B5A] overflow-hidden">
+    <div className="min-h-screen">
+      {/* Hero Section avec image de fond */}
+      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Image de fond */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-[#B8923B]/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#B8923B]/10 rounded-full blur-3xl" />
+          <Image
+            src="/hero-accueil.jpg"
+            alt="Chantier BTP - Men Africa Company"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Overlay sombre pour lisibilité du texte */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1B2B5A]/80 via-[#1B2B5A]/60 to-[#1B2B5A]/90" />
         </div>
-        
-        <div className="container-premium relative z-10 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center gap-2 bg-[#B8923B]/20 px-4 py-2 mb-6">
-                <span className="w-2 h-2 bg-[#B8923B] rounded-full animate-pulse" />
-                <span className="text-[#B8923B] font-medium text-sm">Votre partenaire multisectoriel</span>
-              </div>
-              
-              <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Men Africa<br />
-                <span className="text-[#B8923B]">Company</span>
-              </h1>
-              
-              <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-xl">
-                Finance, Industrie et Commerce au service de votre réussite en Côte d&apos;Ivoire et en Afrique.
-              </p>
-              
-              <p className="text-[#B8923B] font-semibold italic text-lg mb-8">
-                &quot;Faite briller votre lumière&quot;
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="btn-gold">
-                  Demander un Devis
-                </Link>
-                <Link href="/a-propos" className="px-8 py-3 border-2 border-white/30 text-white hover:bg-white/10 transition-colors font-medium text-center">
-                  Découvrir Men Africa
-                </Link>
-              </div>
-            </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden lg:block"
+        {/* Contenu Hero */}
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            MEN AFRICA COMPANY
+          </h1>
+          <div className="w-32 h-1 bg-[#B8923B] mx-auto mb-6" />
+          <p className="text-xl md:text-2xl text-[#B8923B] font-semibold mb-4">
+            BTP • BÉTON MANUFACTURÉ • IMPORT-EXPORT
+          </p>
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Votre partenaire de confiance pour tous vos projets de construction en Côte d&apos;Ivoire
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/catalogue"
+              className="px-8 py-4 bg-[#B8923B] text-white font-semibold rounded-lg hover:bg-[#9A7B32] transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <div className="relative h-48 overflow-hidden shadow-xl">
-                      <Image
-                        src="/catalogue/poteau-electrique.jpg"
-                        alt="Poteaux électriques"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="relative h-32 overflow-hidden shadow-xl">
-                      <Image
-                        src="/catalogue/paves.jpg"
-                        alt="Pavés"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-4 pt-8">
-                    <div className="relative h-32 overflow-hidden shadow-xl">
-                      <Image
-                        src="/catalogue/agglos.jpg"
-                        alt="Agglos"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="relative h-48 overflow-hidden shadow-xl">
-                      <Image
-                        src="/realisations/site-production-1.jpg"
-                        alt="Site de production"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              Découvrir nos produits
+            </Link>
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#1B2B5A] transition-all duration-300"
+            >
+              Nous contacter
+            </Link>
           </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-12 bg-white border-b">
-        <div className="container-premium">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-[#B8923B] mb-1">
-                  {stat.value}
-                </div>
-                <p className="text-gray-600 text-sm">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PÔLES D'ACTIVITÉ */}
-      <section className="py-20">
-        <div className="container-premium">
+      {/* Section Services */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
-              Nos Pôles d&apos;Activité
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
+              Nos Domaines d&apos;Expertise
             </h2>
-            <div className="gold-line mx-auto mb-6" />
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Trois domaines d&apos;expertise complémentaires pour accompagner tous vos projets
-            </p>
+            <div className="w-24 h-1 bg-[#B8923B] mx-auto" />
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {poles.map((pole, index) => (
-              <motion.div
-                key={pole.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link href={pole.href} className="block bg-white p-8 shadow-lg border border-gray-100 hover:border-[#B8923B] transition-all group h-full">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${pole.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                    <pole.icon className="text-white" size={32} />
-                  </div>
-                  <h3 className="font-playfair text-xl font-semibold text-[#1B2B5A] mb-3">
-                    {pole.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{pole.description}</p>
-                  <span className="inline-flex items-center gap-2 text-[#B8923B] font-medium group-hover:gap-3 transition-all">
-                    En savoir plus
-                    <ArrowRight size={18} />
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
+            {/* Service 1 */}
+            <div className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-20 h-20 bg-[#1B2B5A] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#B8923B] transition-colors">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#1B2B5A] mb-4">BTP & Construction</h3>
+              <p className="text-gray-600">
+                Travaux de génie civil, VRD, terrassement et aménagement urbain avec des équipements de pointe.
+              </p>
+            </div>
+
+            {/* Service 2 */}
+            <div className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-20 h-20 bg-[#1B2B5A] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#B8923B] transition-colors">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#1B2B5A] mb-4">Béton Manufacturé</h3>
+              <p className="text-gray-600">
+                Production de bordures, pavés, caniveaux, dalots, buses et éléments préfabriqués de qualité.
+              </p>
+            </div>
+
+            {/* Service 3 */}
+            <div className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 group">
+              <div className="w-20 h-20 bg-[#1B2B5A] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#B8923B] transition-colors">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#1B2B5A] mb-4">Import-Export</h3>
+              <p className="text-gray-600">
+                Commerce international de matériaux de construction et équipements pour l&apos;Afrique de l&apos;Ouest.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CATALOGUE APERÇU */}
-      <section className="py-20 bg-[#F8F9FA]">
-        <div className="container-premium">
+      {/* Section Catalogue Aperçu */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
-              Notre Catalogue Béton
+            <h2 className="text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
+              Notre Catalogue
             </h2>
-            <div className="gold-line mx-auto mb-6" />
+            <div className="w-24 h-1 bg-[#B8923B] mx-auto mb-4" />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Découvrez notre gamme complète de produits en béton manufacturé
+              Découvrez notre gamme complète de produits en béton manufacturé, 
+              fabriqués selon les normes les plus strictes.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {cataloguePreview.map((produit, index) => (
-              <motion.div
-                key={produit.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="bg-white shadow-md overflow-hidden group"
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { name: "Bordures", image: "/catalogue/bordure-t1.jpg" },
+              { name: "Caniveaux", image: "/catalogue/caniveau-rectangulaire.jpg" },
+              { name: "Pavés", image: "/catalogue/pave-i.jpg" },
+              { name: "Dalots", image: "/catalogue/dalot-ouvert.jpg" },
+            ].map((item) => (
+              <Link
+                key={item.name}
+                href="/catalogue"
+                className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative h-40 overflow-hidden">
+                <div className="aspect-square relative">
                   <Image
-                    src={produit.image}
-                    alt={produit.name}
+                    src={item.image}
+                    alt={item.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="p-3 text-center">
-                  <h4 className="font-medium text-[#1B2B5A] text-sm">{produit.name}</h4>
+                <div className="p-4 text-center bg-[#1B2B5A] group-hover:bg-[#B8923B] transition-colors">
+                  <h3 className="font-semibold text-white">{item.name}</h3>
                 </div>
-              </motion.div>
+              </Link>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/industrie/beton-manufacture" className="btn-gold inline-flex items-center gap-2">
-              Voir le Catalogue Complet
-              <ArrowRight size={18} />
+            <Link
+              href="/catalogue"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#1B2B5A] text-white font-semibold rounded-lg hover:bg-[#B8923B] transition-colors"
+            >
+              Voir tout le catalogue
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* POURQUOI NOUS CHOISIR */}
-      <section className="py-20">
-        <div className="container-premium">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-6">
-                Pourquoi Choisir Men Africa ?
-              </h2>
-              <div className="gold-line mb-8" />
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#1B2B5A]/10 flex items-center justify-center shrink-0">
-                    <Award className="text-[#B8923B]" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Qualité Garantie</h3>
-                    <p className="text-gray-600">Produits conformes aux normes, contrôle qualité rigoureux à chaque étape.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#1B2B5A]/10 flex items-center justify-center shrink-0">
-                    <Users className="text-[#B8923B]" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Équipe Expérimentée</h3>
-                    <p className="text-gray-600">Des professionnels qualifiés à votre service pour tous vos projets.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#1B2B5A]/10 flex items-center justify-center shrink-0">
-                    <TrendingUp className="text-[#B8923B]" size={24} />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[#1B2B5A] mb-1">Solutions Complètes</h3>
-                    <p className="text-gray-600">De la conception à la livraison, un accompagnement personnalisé.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative h-[400px] lg:h-[500px]"
-            >
-              <Image
-                src="/realisations/site-production-2.jpg"
-                alt="Site de production Men Africa"
-                fill
-                className="object-cover shadow-xl"
-              />
-              <div className="absolute -bottom-6 -left-6 bg-[#B8923B] p-6 text-white">
-                <p className="text-3xl font-bold">100+</p>
-                <p className="text-sm">Projets réalisés</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CLIENTS */}
+      {/* Section Chiffres clés */}
       <section className="py-16 bg-[#1B2B5A]">
-        <div className="container-premium">
-          <div className="text-center mb-10">
-            <h3 className="font-playfair text-2xl font-semibold text-white mb-2">
-              Ils Nous Font Confiance
-            </h3>
-            <div className="gold-line mx-auto" />
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-8 items-center">
-            {clients.map((client, index) => (
-              <motion.div
-                key={client}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="px-6 py-3 bg-white/10 text-white font-medium"
-              >
-                {client}
-              </motion.div>
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "10+", label: "Années d'expérience" },
+              { number: "500+", label: "Projets réalisés" },
+              { number: "50+", label: "Produits catalogue" },
+              { number: "100%", label: "Satisfaction client" },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div className="text-4xl md:text-5xl font-bold text-[#B8923B] mb-2">{stat.number}</div>
+                <div className="text-white/80">{stat.label}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-[#B8923B] to-[#d4a84b]">
-        <div className="container-premium text-center">
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à Démarrer Votre Projet ?
+      {/* CTA Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-6">
+            Prêt à démarrer votre projet ?
           </h2>
-          <p className="text-white/90 max-w-2xl mx-auto mb-8">
-            Contactez-nous dès maintenant pour discuter de vos besoins et obtenir un devis personnalisé.
+          <p className="text-lg text-gray-600 mb-8">
+            Contactez-nous dès aujourd&apos;hui pour discuter de vos besoins et obtenir un devis personnalisé.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-4 bg-[#1B2B5A] text-white hover:bg-[#0f1a38] transition-colors font-medium">
-              Demander un Devis
+            <Link
+              href="/contact"
+              className="px-8 py-4 bg-[#B8923B] text-white font-semibold rounded-lg hover:bg-[#9A7B32] transition-colors"
+            >
+              Demander un devis
             </Link>
-            <a href="tel:+22507577405696" className="px-8 py-4 bg-white text-[#1B2B5A] hover:bg-gray-100 transition-colors font-medium inline-flex items-center justify-center gap-2">
-              <Phone size={18} />
-              Appeler Maintenant
+            <a
+              href="tel:+2250707020145"
+              className="px-8 py-4 bg-[#1B2B5A] text-white font-semibold rounded-lg hover:bg-[#2A3F7A] transition-colors flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              07 07 02 01 45
             </a>
           </div>
         </div>
