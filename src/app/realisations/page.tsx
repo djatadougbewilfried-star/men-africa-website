@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building, Factory, Landmark, ArrowRight, CheckCircle } from "lucide-react";
+import { Building, Factory, Landmark, ArrowRight, CheckCircle, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const realisations = [
   {
@@ -101,8 +102,71 @@ export default function RealisationsPage() {
         </div>
       </section>
 
-      {/* PROJETS */}
+      {/* SITE DE PRODUCTION */}
       <section className="py-20">
+        <div className="container-premium">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
+              Notre Site de Production
+            </h2>
+            <div className="gold-line mx-auto mb-6" />
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Découvrez notre unité de production de béton manufacturé à Yopougon
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-80 md:h-[400px] overflow-hidden shadow-xl"
+            >
+              <Image
+                src="/realisations/site-production-1.jpg"
+                alt="Site de production Men Africa - Vue 1"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-white font-playfair text-xl font-semibold">
+                  Zone de Production
+                </h3>
+                <p className="text-white/70 text-sm flex items-center gap-2 mt-1">
+                  <MapPin size={14} />
+                  Yopougon, Zone Industrielle d&apos;Ebimpé
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative h-80 md:h-[400px] overflow-hidden shadow-xl"
+            >
+              <Image
+                src="/realisations/site-production-2.jpg"
+                alt="Site de production Men Africa - Vue 2"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-white font-playfair text-xl font-semibold">
+                  Équipements & Moules
+                </h3>
+                <p className="text-white/70 text-sm flex items-center gap-2 mt-1">
+                  <Factory size={14} />
+                  Production de béton manufacturé
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROJETS */}
+      <section className="py-20 bg-[#F8F9FA]">
         <div className="container-premium">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
@@ -170,7 +234,7 @@ export default function RealisationsPage() {
       </section>
 
       {/* PRODUITS BÉTON */}
-      <section className="py-20 bg-[#F8F9FA]">
+      <section className="py-20">
         <div className="container-premium">
           <div className="text-center mb-16">
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#1B2B5A] mb-4">
@@ -190,18 +254,25 @@ export default function RealisationsPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white p-6 text-center shadow-md hover:shadow-lg transition-shadow"
+                className="bg-white p-6 text-center shadow-md hover:shadow-lg transition-shadow border border-gray-100"
               >
                 <h3 className="font-semibold text-[#1B2B5A] mb-2">{produit.name}</h3>
                 <p className="text-gray-500 text-sm">{produit.description}</p>
               </motion.div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Link href="/industrie/beton-manufacture" className="btn-gold inline-flex items-center gap-2">
+              Voir le Catalogue Complet
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ÉQUIPEMENTS */}
-      <section className="py-20">
+      <section className="py-20 bg-[#F8F9FA]">
         <div className="container-premium">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -222,7 +293,7 @@ export default function RealisationsPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-center gap-3 p-4 bg-[#F8F9FA]"
+                    className="flex items-center gap-3 p-4 bg-white shadow-sm"
                   >
                     <CheckCircle className="text-[#B8923B]" size={20} />
                     <span className="text-[#1B2B5A] font-medium">{equipement}</span>
