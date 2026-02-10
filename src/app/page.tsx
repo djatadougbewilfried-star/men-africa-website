@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section avec image de fond */}
+      {/* Hero Section avec image de fond optimisée */}
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        {/* Image de fond */}
+        {/* Image de fond avec optimisations */}
         <div className="absolute inset-0">
           <Image
             src="/hero-accueil.jpg"
@@ -14,6 +14,10 @@ export default function Home() {
             fill
             className="object-cover"
             priority
+            quality={70}
+            sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAARACADASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAUGBwT/xAAoEAABAwMDAwMFAAAAAAAAAAABAgMEBQYRAAchEiIxE0FRFGFxgZH/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQF/8QAHREAAgICAwEAAAAAAAAAAAAAAQIAEQMhBBJBcf/aAAwDAQACEQMRAD8A0G4LtpFvQ0yKjJCUqOEoSMrWfgD4+54GsijXhd9XfDgmupgMvPltlqAwyHASQMA5Ur30VZelXbXKk4oIDiWXCEpcksJbQSPHSUjOO3wDnTKxdqK3R5TV11WomFVZICY9OB7Y6AOjqCfKlHuPvk4GNKCMFuxgn3O5e2gJvWbXpqJdoVBaahKShbaWQoJKsDyPPONNJAK46F+VaaN9UY5MWsYgOJP/2Q=="
           />
           {/* Overlay sombre pour lisibilité du texte */}
           <div className="absolute inset-0 bg-gradient-to-b from-[#1B2B5A]/80 via-[#1B2B5A]/60 to-[#1B2B5A]/90" />
@@ -108,7 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section Catalogue Aperçu */}
+      {/* Section Catalogue Aperçu - Images optimisées */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -140,6 +144,9 @@ export default function Home() {
                     alt={item.name}
                     fill
                     className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    quality={75}
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
                 </div>
                 <div className="p-4 text-center bg-[#1B2B5A] group-hover:bg-[#B8923B] transition-colors">
