@@ -37,7 +37,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/catalogue"
+              href="/industrie"
               className="px-8 py-4 bg-[#B8923B] text-white font-semibold rounded-lg hover:bg-[#9A7B32] transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Découvrir nos produits
@@ -135,7 +135,7 @@ export default function Home() {
             ].map((item) => (
               <Link
                 key={item.name}
-                href="/catalogue"
+                href="/industrie"
                 className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
               >
                 <div className="aspect-square relative">
@@ -158,7 +158,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <Link
-              href="/catalogue"
+              href="/industrie"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#1B2B5A] text-white font-semibold rounded-lg hover:bg-[#B8923B] transition-colors"
             >
               Voir tout le catalogue
