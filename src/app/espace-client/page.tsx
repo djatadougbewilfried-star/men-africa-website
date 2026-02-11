@@ -255,8 +255,8 @@ export default function EspaceClientPage() {
               <div className="mt-10 p-6 bg-[#F8F9FA] border-l-4 border-[#B8923B]">
                 <p className="text-gray-700">
                   <strong>Besoin d&apos;aide ?</strong> Contactez-nous au{" "}
-                  <a href="tel:+2250757740596" className="text-[#B8923B] font-medium">
-                    +225 07 57 74 05 96
+                  <a href="tel:+2250700000000" className="text-[#B8923B] font-medium">
+                    +225 07 00 00 00 00
                   </a>{" "}
                   pour obtenir vos identifiants de connexion.
                 </p>
