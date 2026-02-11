@@ -1,227 +1,186 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, Twitter, Instagram, ArrowRight, Loader2, CheckCircle } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [error, setError] = useState("");
+  const pathname = usePathname();
 
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError("");
+  // Cacher le footer sur la page admin
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
-    try {
-      const { error: supabaseError } = await supabase
-        .from("newsletter")
-        .insert([{ email }]);
-
-      if (supabaseError) {
-        if (supabaseError.code === "23505") {
-          setError("Cet email est déjà inscrit.");
-        } else {
-          throw supabaseError;
-        }
-      } else {
-        setIsSubscribed(true);
-        setEmail("");
-      }
-    } catch (err) {
-      setError("Une erreur est survenue.");
-      console.error(err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#1B2B5A] text-white">
-      {/* Newsletter */}
-      <div className="border-b border-white/10">
-        <div className="container-premium py-12">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="font-playfair text-2xl font-semibold mb-2">Restez Informé</h3>
-              <p className="text-white/70">Recevez nos dernières actualités et opportunités</p>
-            </div>
-            {isSubscribed ? (
-              <div className="flex items-center gap-2 text-green-400">
-                <CheckCircle size={20} />
-                <span>Merci pour votre inscription !</span>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <div>
-                  <input
-                    type="email"
-                    placeholder="Votre adresse email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:border-[#B8923B] w-full md:w-80"
-                  />
-                  {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn-gold whitespace-nowrap flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {isSubmitting ? (
-                    <Loader2 size={18} className="animate-spin" />
-                  ) : (
-                    <>
-                      S&apos;inscrire
-                      <ArrowRight size={18} />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
-      <div className="container-premium py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Logo & Info */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
-              <img 
-                src="/logo.jpg" 
-                alt="Men Africa Company" 
-                className="h-16 w-auto bg-white p-2"
-              />
-            </Link>
-            <p className="text-white/70 mb-6 leading-relaxed">
-              Votre partenaire stratégique multisectoriel en Afrique. Finance, Industrie et Commerce au service de votre réussite.
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="relative w-12 h-12 bg-white rounded-lg p-1">
+                <Image
+                  src="/logo.jpg"
+                  alt="Men Africa Company"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">MEN AFRICA</h3>
+                <p className="text-sm text-white/70">COMPANY</p>
+              </div>
+            </div>
+            <p className="text-white/80 text-sm leading-relaxed mb-4">
+              Votre partenaire de confiance pour tous vos projets de construction, 
+              fabrication de béton manufacturé et import-export en Côte d&apos;Ivoire.
             </p>
-            <p className="text-[#B8923B] font-semibold italic mb-6">
-              &quot;Faite briller votre lumière&quot;
-            </p>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-3">
-                <Phone size={18} className="text-[#B8923B] shrink-0 mt-0.5" />
-                <div>
-                  <p>(+225) 27 24 33 64 04</p>
-                  <p>(+225) 07 57 74 05 96</p>
-                  <p>(+225) 07 02 02 01 45</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail size={18} className="text-[#B8923B] shrink-0" />
-                <span>MENAFRICA@company-sites.net</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin size={18} className="text-[#B8923B] shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-medium">Siège Social :</p>
-                  <p>Cocody, Riviera Palmeraie</p>
-                  <p>21 BP 1831 Abidjan 21</p>
-                  <p className="font-medium mt-2">Siège Technique :</p>
-                  <p>Yopougon, Cité ADO</p>
-                  <p>Zone Industrielle, Ebimpé</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock size={18} className="text-[#B8923B] shrink-0" />
-                <span>Lun - Ven: 8h00 - 18h00</span>
-              </div>
+            <div className="flex gap-3">
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                </svg>
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                </svg>
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667h-3.554v-11.452h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zm-15.11-13.019c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019h-3.564v-11.452h3.564v11.452zm15.106-20.452h-20.454c-.979 0-1.771.774-1.771 1.729v20.542c0 .956.792 1.729 1.771 1.729h20.451c.978 0 1.778-.773 1.778-1.729v-20.542c0-.955-.8-1.729-1.778-1.729z"/>
+                </svg>
+              </a>
             </div>
           </div>
 
-          {/* Finance */}
+          {/* Quick Links */}
           <div>
-            <h4 className="font-playfair text-lg font-semibold mb-6">Finance & Investissement</h4>
-            <ul className="space-y-3 text-white/70">
-              <li><Link href="/finance/courtage-bancaire" className="hover:text-[#B8923B] transition-colors">Courtage Bancaire</Link></li>
-              <li><Link href="/finance/courtage-assurance" className="hover:text-[#B8923B] transition-colors">Courtage Assurance</Link></li>
-              <li><Link href="/finance/levee-de-fonds" className="hover:text-[#B8923B] transition-colors">Levée de Fonds</Link></li>
-              <li><Link href="/finance/structuration-projet" className="hover:text-[#B8923B] transition-colors">Structuration de Projet</Link></li>
-              <li><Link href="/finance/simulateur" className="hover:text-[#B8923B] transition-colors">Simulateur</Link></li>
+            <h4 className="font-bold text-lg mb-4 text-[#B8923B]">Liens Rapides</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link href="/a-propos" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  À Propos
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalogue" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Catalogue Produits
+                </Link>
+              </li>
+              <li>
+                <Link href="/realisations" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Nos Réalisations
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Industrie */}
+          {/* Services */}
           <div>
-            <h4 className="font-playfair text-lg font-semibold mb-6">Industrie & Béton</h4>
-            <ul className="space-y-3 text-white/70">
-              <li><Link href="/industrie/beton-manufacture" className="hover:text-[#B8923B] transition-colors">Béton Manufacturé</Link></li>
-              <li><Link href="/industrie/solutions-btp" className="hover:text-[#B8923B] transition-colors">Solutions BTP</Link></li>
-              <li><Link href="/industrie/fournitures" className="hover:text-[#B8923B] transition-colors">Fournitures Techniques</Link></li>
-              <li><Link href="/industrie/configurateur" className="hover:text-[#B8923B] transition-colors">Configurateur Béton</Link></li>
+            <h4 className="font-bold text-lg mb-4 text-[#B8923B]">Nos Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/industrie/beton" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Béton Manufacturé
+                </Link>
+              </li>
+              <li>
+                <Link href="/finance" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Finance & Investissement
+                </Link>
+              </li>
+              <li>
+                <Link href="/commerce/import-export" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  Import-Export
+                </Link>
+              </li>
+              <li>
+                <Link href="/industrie" className="text-white/80 hover:text-[#B8923B] transition-colors text-sm">
+                  BTP & Construction
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Commerce & Entreprise */}
+          {/* Contact Info */}
           <div>
-            <h4 className="font-playfair text-lg font-semibold mb-6">Commerce & Supply</h4>
-            <ul className="space-y-3 text-white/70">
-              <li><Link href="/commerce/general" className="hover:text-[#B8923B] transition-colors">Commerce Général</Link></li>
-              <li><Link href="/commerce/import-export" className="hover:text-[#B8923B] transition-colors">Import / Export</Link></li>
-              <li><Link href="/commerce/distribution" className="hover:text-[#B8923B] transition-colors">Distribution</Link></li>
+            <h4 className="font-bold text-lg mb-4 text-[#B8923B]">Contact</h4>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-[#B8923B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span className="text-white/80 text-sm">
+                  Cocody, Riviera Palmeraie<br />
+                  21 BP 1831 Abidjan 21<br />
+                  Côte d&apos;Ivoire
+                </span>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-[#B8923B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <a href="tel:+22527243364 04" className="text-white/80 hover:text-[#B8923B] text-sm">
+                  (+225) 27 24 33 64 04
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <svg className="w-5 h-5 text-[#B8923B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <a href="mailto:MENAFRICA@company-sites.net" className="text-white/80 hover:text-[#B8923B] text-sm">
+                  MENAFRICA@company-sites.net
+                </a>
+              </li>
             </ul>
-            
-            <h4 className="font-playfair text-lg font-semibold mb-6 mt-8">L&apos;Entreprise</h4>
-            <ul className="space-y-3 text-white/70">
-              <li><Link href="/a-propos" className="hover:text-[#B8923B] transition-colors">À Propos</Link></li>
-              <li><Link href="/realisations" className="hover:text-[#B8923B] transition-colors">Nos Réalisations</Link></li>
-              <li><Link href="/blog" className="hover:text-[#B8923B] transition-colors">Blog & Actualités</Link></li>
-              <li><Link href="/contact" className="hover:text-[#B8923B] transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Legal Info */}
-      <div className="border-t border-white/10 py-4">
-        <div className="container-premium">
-          <div className="text-center text-white/50 text-xs space-y-1">
-            <p>SARL U au Capital de 5 000 000 FCFA | Gérant : MENDO GABRIEL ARNOLD</p>
-            <p>RCCM : CI-ABJ-03-2024-B13-02779 | N° CC : 2401009 J | Régime : TEE</p>
-            <p>Banque : BNI - Compte N° 000113950008</p>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-premium py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/50 text-sm">
-              © {new Date().getFullYear()} Men Africa Company. Tous droits réservés.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link href="/mentions-legales" className="text-white/50 hover:text-white text-sm transition-colors">
-                Mentions Légales
-              </Link>
-              <Link href="/confidentialite" className="text-white/50 hover:text-white text-sm transition-colors">
-                Confidentialité
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Instagram size={18} />
-              </a>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/60 text-sm">
+            © {currentYear} Men Africa Company. Tous droits réservés.
+          </p>
+          <div className="flex gap-6">
+            <Link href="/mentions-legales" className="text-white/60 hover:text-white text-sm">
+              Mentions légales
+            </Link>
+            <Link href="/politique-confidentialite" className="text-white/60 hover:text-white text-sm">
+              Politique de confidentialité
+            </Link>
           </div>
         </div>
       </div>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/2250707020145"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors z-50"
+      >
+        <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
     </footer>
   );
 }
