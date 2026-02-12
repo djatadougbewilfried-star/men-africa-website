@@ -236,7 +236,7 @@ export default function IndustriePage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#1B2B5A] to-[#2a3f7a]" />
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-10">
           <Image
             src="/realisations/site-production-2.jpg"
             alt="Site de production"
@@ -253,10 +253,10 @@ export default function IndustriePage() {
             <span className="inline-block px-4 py-2 bg-[#B8923B]/20 border border-[#B8923B] rounded-full text-[#B8923B] text-sm font-medium mb-6">
               Pôle Industrie & Béton Manufacturé
             </span>
-            <h1 className="font-playfair text-4xl md:text-6xl font-bold mb-6">
-              Produits Béton de <span className="text-[#B8923B]">Qualité Supérieure</span>
+            <h1 className="hero-title font-playfair text-4xl md:text-6xl font-bold mb-6">
+              Produits Béton de <span className="hero-gold">Qualité Supérieure</span>
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="hero-subtitle text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               MEN AFRICA COMPANY, votre partenaire de confiance pour tous vos besoins en béton manufacturé. 
               Production locale à Yopougon, livraison dans toute la Côte d&apos;Ivoire.
             </p>

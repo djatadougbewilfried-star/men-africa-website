@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, Twitter, Instagram, ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
@@ -31,9 +32,8 @@ export default function Footer() {
         setIsSubscribed(true);
         setEmail("");
       }
-    } catch (err) {
+    } catch {
       setError("Une erreur est survenue.");
-      console.error(err);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,9 +93,11 @@ export default function Footer() {
           {/* Logo & Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6">
-              <img 
-                src="/logo.jpg" 
-                alt="Men Africa Company" 
+              <Image
+                src="/logo.jpg"
+                alt="Men Africa Company"
+                width={160}
+                height={64}
                 className="h-16 w-auto bg-white p-2"
               />
             </Link>
@@ -206,16 +208,16 @@ export default function Footer() {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
                 <Facebook size={18} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
                 <Linkedin size={18} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
                 <Twitter size={18} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
                 <Instagram size={18} />
               </a>
             </div>

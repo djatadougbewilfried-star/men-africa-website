@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingBag, Ship, Truck, Package, ArrowRight, CheckCircle, Globe } from "lucide-react";
 
 const services = [
@@ -58,15 +59,15 @@ export default function CommercePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Commerce & <span className="text-[#B8923B]">Supply Chain</span>
+            Commerce & <span className="hero-gold">Supply Chain</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-white/80 max-w-2xl mx-auto"
+            className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto"
           >
             Votre partenaire pour l&apos;approvisionnement et la distribution en Afrique
           </motion.p>
@@ -165,9 +166,12 @@ export default function CommercePage() {
               </div>
             </div>
             <div className="relative">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=500&fit=crop"
                 alt="Global Network"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-96 object-cover shadow-lg"
               />
               <div className="absolute -bottom-6 -right-6 bg-[#B8923B] text-white p-6">
@@ -192,8 +196,8 @@ export default function CommercePage() {
             <Link href="/contact" className="btn-primary">
               Demander un Devis
             </Link>
-            <Link href="/espace-client" className="btn-outline">
-              Espace Client
+            <Link href="/contact" className="btn-outline">
+              Nous Contacter
             </Link>
           </div>
         </div>

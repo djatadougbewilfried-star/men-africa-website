@@ -48,9 +48,8 @@ export default function ContactPage() {
         service: "",
         message: "",
       });
-    } catch (err) {
+    } catch {
       setError("Une erreur est survenue. Veuillez réessayer.");
-      console.error(err);
     } finally {
       setIsSubmitting(false);
     }
@@ -72,11 +71,11 @@ export default function ContactPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Contactez-<span className="text-[#B8923B]">Nous</span>
+            Contactez-<span className="hero-gold">Nous</span>
           </motion.h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto">
             Notre équipe est à votre disposition pour répondre à toutes vos questions
           </p>
         </div>

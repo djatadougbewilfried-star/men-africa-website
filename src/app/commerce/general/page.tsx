@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingBag, CheckCircle, ArrowRight, Monitor, Printer, Package, Coffee } from "lucide-react";
 
 const categories = [
@@ -53,15 +54,15 @@ export default function CommerceGeneralPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Commerce <span className="text-[#B8923B]">Général</span>
+              Commerce <span className="hero-gold">Général</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Fourniture de biens et équipements pour entreprises et collectivités
             </motion.p>
@@ -156,9 +157,12 @@ export default function CommerceGeneralPage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=500&fit=crop"
                 alt="Commerce Général"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>

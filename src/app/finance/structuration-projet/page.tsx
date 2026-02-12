@@ -53,15 +53,15 @@ export default function StructurationProjetPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Structuration de <span className="text-[#B8923B]">Projet</span>
+              Structuration de <span className="hero-gold">Projet</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Montage financier et juridique de vos projets d&apos;investissement
             </motion.p>

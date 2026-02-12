@@ -53,15 +53,15 @@ export default function FinancePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Finance & <span className="text-[#B8923B]">Investissement</span>
+            Finance & <span className="hero-gold">Investissement</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-white/80 max-w-2xl mx-auto"
+            className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto"
           >
             Des solutions financières sur mesure pour accompagner votre croissance
           </motion.p>

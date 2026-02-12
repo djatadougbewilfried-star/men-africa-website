@@ -68,11 +68,11 @@ export default function AProposPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            À Propos de <span className="text-[#B8923B]">Men Africa</span>
+            À Propos de <span className="hero-gold">Men Africa</span>
           </motion.h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto">
             Votre partenaire stratégique multisectoriel en Côte d&apos;Ivoire
           </p>
         </div>

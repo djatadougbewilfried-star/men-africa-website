@@ -60,15 +60,15 @@ export default function ImportExportPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Import / <span className="text-[#B8923B]">Export</span>
+              Import / <span className="hero-gold">Export</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Services complets d&apos;importation et d&apos;exportation vers l&apos;international
             </motion.p>

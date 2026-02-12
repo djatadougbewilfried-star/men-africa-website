@@ -29,7 +29,8 @@ export default function WhatsAppButton() {
       )}
       <button
         onClick={toggleOpen}
-        className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+        aria-label={isOpenState ? "Fermer WhatsApp" : "Ouvrir WhatsApp"}
+        className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors"
       >
         {isOpenState ? (
           <X size={28} className="text-white" />

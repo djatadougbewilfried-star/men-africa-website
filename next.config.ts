@@ -3,15 +3,16 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Optimisation des images
   images: {
-    // Formats modernes (WebP en priorité, puis AVIF)
     formats: ['image/avif', 'image/webp'],
-    
-    // Tailles d'images optimisées pour différents écrans
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    
-    // Qualité par défaut (réduire de 75 à 70 pour gagner en taille)
-    minimumCacheTTL: 60 * 60 * 24 * 30, // Cache 30 jours
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
   
   // Compression des assets

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Truck, CheckCircle, ArrowRight, Warehouse, MapPin, Clock, BarChart3 } from "lucide-react";
 
 const services = [
@@ -60,15 +61,15 @@ export default function DistributionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Distribution & <span className="text-[#B8923B]">Logistique</span>
+              Distribution & <span className="hero-gold">Logistique</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Solutions logistiques intégrées pour optimiser votre supply chain
             </motion.p>
@@ -177,9 +178,12 @@ export default function DistributionPage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=500&fit=crop"
                 alt="Logistique"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>

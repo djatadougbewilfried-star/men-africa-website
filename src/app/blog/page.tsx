@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, User, ArrowRight, Search } from "lucide-react";
 
 const categories = ["Tous", "Finance", "Industrie", "Commerce", "Actualités"];
@@ -92,15 +93,15 @@ export default function BlogPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Blog & <span className="text-[#B8923B]">Actualités</span>
+            Blog & <span className="hero-gold">Actualités</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-white/80 max-w-2xl mx-auto"
+            className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto"
           >
             Conseils d&apos;experts, analyses sectorielles et actualités de Men Africa Company
           </motion.p>
@@ -152,9 +153,12 @@ export default function BlogPage() {
                   className="bg-white border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-500 group"
                 >
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={article.image}
                       alt={article.title}
+                      width={600}
+                      height={400}
+                      unoptimized
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <span className="absolute top-4 left-4 px-3 py-1 bg-[#B8923B] text-white text-xs font-medium">

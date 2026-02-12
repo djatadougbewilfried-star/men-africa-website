@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const testimonials = [
@@ -74,9 +75,12 @@ export default function Testimonials() {
               </p>
 
               <div className="flex flex-col items-center">
-                <img
+                <Image
                   src={testimonials[currentIndex].image}
                   alt={testimonials[currentIndex].name}
+                  width={150}
+                  height={150}
+                  unoptimized
                   className="w-20 h-20 rounded-full object-cover border-4 border-[#B8923B] mb-4"
                 />
                 <h4 className="font-playfair text-xl font-semibold text-[#1B2B5A]">

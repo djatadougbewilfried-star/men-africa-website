@@ -2,13 +2,7 @@
 
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import Image from 'next/image';
-import { createClient } from '@supabase/supabase-js';
-
-// Configuration Supabase
-const SUPABASE_URL = 'https://uongrvuzgybvzgjfsncb.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvbmdydnV6Z3lidnpnamZzbmNiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2NzQ0NzMsImV4cCI6MjA4MTI1MDQ3M30.QtebFdW5R1lqpH8UtPKAhAA1tOlCd3XMQ-mBlynCb-w';
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from '@/lib/supabase';
 
 // Types
 interface User {
@@ -150,8 +144,8 @@ export default function AdminPage() {
       if (contactsRes.data) setContacts(contactsRes.data);
       if (visitorsRes.data) setVisitors(visitorsRes.data);
       if (productsRes.data && productsRes.data.length > 0) setProducts(productsRes.data);
-    } catch (error) {
-      console.error('Erreur Supabase:', error);
+    } catch {
+      // Supabase connection error - silent fallback to local mode
     }
     setIsLoading(false);
   }, []);
@@ -167,7 +161,7 @@ export default function AdminPage() {
           loadDataFromSupabase();
         }
       } catch {
-        console.log('Mode local activé');
+        // Fallback to local mode
       }
     }
     checkConnection();

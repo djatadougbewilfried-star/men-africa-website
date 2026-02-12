@@ -142,15 +142,15 @@ export default function ConfigurateurPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-4xl md:text-5xl font-bold mb-4"
+            className="hero-title font-playfair text-4xl md:text-5xl font-bold mb-4"
           >
-            Configurateur <span className="text-[#B8923B]">Béton</span>
+            Configurateur <span className="hero-gold">Béton</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-white/80 max-w-2xl mx-auto"
+            className="hero-subtitle text-lg text-white/80 max-w-2xl mx-auto"
           >
             Composez votre commande et obtenez un devis instantané
           </motion.p>
@@ -307,7 +307,7 @@ export default function ConfigurateurPage() {
                         Demander ce Devis
                         <ArrowRight size={18} />
                       </Link>
-                      <a href="tel:+2250700000000" className="btn-outline w-full flex items-center justify-center gap-2">
+                      <a href="tel:+2250757740596" className="btn-outline w-full flex items-center justify-center gap-2">
                         <Phone size={18} />
                         Commander par Téléphone
                       </a>

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Politique de Confidentialité",
+  description: "Politique de confidentialité et protection des données personnelles de Men Africa Company.",
+};
+
 export default function ConfidentialitePage() {
   return (
     <>

@@ -118,11 +118,11 @@ export default function BetonManufacturePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
           >
-            Béton <span className="text-[#B8923B]">Manufacturé</span>
+            Béton <span className="hero-gold">Manufacturé</span>
           </motion.h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="hero-subtitle text-xl text-white/80 max-w-2xl mx-auto">
             Production de qualité supérieure pour tous vos projets de construction et d&apos;aménagement
           </p>
         </div>

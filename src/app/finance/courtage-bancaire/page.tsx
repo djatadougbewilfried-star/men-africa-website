@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Landmark, CheckCircle, ArrowRight, Building, CreditCard, Home, Briefcase } from "lucide-react";
 
 const services = [
@@ -58,15 +59,15 @@ export default function CourtageBancairePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Courtage <span className="text-[#B8923B]">Bancaire</span>
+              Courtage <span className="hero-gold">Bancaire</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Nous négocions pour vous les meilleures conditions de financement auprès de nos partenaires bancaires
             </motion.p>
@@ -99,9 +100,12 @@ export default function CourtageBancairePage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=500&fit=crop"
                 alt="Courtage Bancaire"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>

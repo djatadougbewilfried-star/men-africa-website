@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { TrendingUp, CheckCircle, ArrowRight, Users, Target, FileText, Handshake } from "lucide-react";
 
 const steps = [
@@ -58,15 +59,15 @@ export default function LeveeDeFondsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Levée de <span className="text-[#B8923B]">Fonds</span>
+              Levée de <span className="hero-gold">Fonds</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Accompagnement complet pour financer votre croissance et concrétiser vos ambitions
             </motion.p>
@@ -106,9 +107,12 @@ export default function LeveeDeFondsPage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=500&fit=crop"
                 alt="Levée de Fonds"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mentions Légales",
+  description: "Mentions légales de Men Africa Company. SARL U au capital de 5 000 000 FCFA, Abidjan, Côte d'Ivoire.",
+};
+
 export default function MentionsLegalesPage() {
   return (
     <div>

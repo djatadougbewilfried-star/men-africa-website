@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
 @import "tailwindcss";
 
 /* ===== VARIABLES CSS ===== */
@@ -26,14 +24,14 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   color: var(--dark);
   background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
 }
 
 /* ===== BOUTONS PREMIUM ===== */
@@ -44,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 2rem;
   background-color: var(--primary-900);
   color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -67,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 2rem;
   background: linear-gradient(to right, var(--gold-500), var(--gold-600));
   color: #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -89,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 2rem;
   background-color: transparent;
   color: var(--primary-900);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -111,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 2rem;
   background-color: transparent;
   color: var(--gold-500);
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   text-transform: uppercase;
@@ -128,7 +126,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== TITRES PREMIUM ===== */
 .heading-1 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   color: var(--primary-900);
@@ -136,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .heading-2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   color: var(--primary-900);
@@ -144,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .heading-3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
   color: var(--gold-500);
@@ -214,14 +212,30 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--light);
 }
 
-/* ===== HERO OVERLAY ===== */
+/* ===== HERO STYLES ===== */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, 
-    rgba(27, 43, 90, 0.95), 
-    rgba(27, 43, 90, 0.80), 
+  background: linear-gradient(to right,
+    rgba(27, 43, 90, 0.95),
+    rgba(27, 43, 90, 0.80),
     rgba(27, 43, 90, 0.60));
+}
+
+/* Titres hero - text-shadow pour lisibilité sur fond sombre */
+.hero-title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Accent doré dans les hero - plus lumineux pour meilleur contraste */
+.hero-gold {
+  color: #D4AB4C;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 171, 76, 0.2);
+}
+
+/* Sous-titre hero - meilleure lisibilité */
+.hero-subtitle {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== ANIMATIONS ===== */

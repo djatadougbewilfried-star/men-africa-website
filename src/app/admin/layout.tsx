@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Administration | Men Africa Company",
+  title: "Administration",
   description: "Panneau d'administration Men Africa Company",
   robots: "noindex, nofollow", // Ne pas indexer la page admin
 };

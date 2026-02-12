@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Phone, Mail, User, Globe } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, ChevronDown, Phone, Mail, Globe } from "lucide-react";
 
 const navigation = [
   { name: "Accueil", href: "/" },
@@ -60,7 +61,7 @@ export default function Header() {
       <div className="bg-[#1B2B5A] text-white py-2 hidden md:block">
         <div className="container-premium flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+22527243364004" className="flex items-center gap-2 hover:text-[#B8923B] transition-colors">
+            <a href="tel:+2252724336404" className="flex items-center gap-2 hover:text-[#B8923B] transition-colors">
               <Phone size={14} />
               (+225) 27 24 33 64 04
             </a>
@@ -70,10 +71,6 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-6">
-            <Link href="/espace-client" className="flex items-center gap-2 hover:text-[#B8923B] transition-colors">
-              <User size={14} />
-              Espace Client
-            </Link>
             <div className="flex items-center gap-2">
               <Globe size={14} />
               <span>FR</span>
@@ -87,9 +84,12 @@ export default function Header() {
         <div className="container-premium flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <img 
-              src="/logo.jpg" 
-              alt="Men Africa Company" 
+            <Image
+              src="/logo.jpg"
+              alt="Men Africa Company"
+              width={120}
+              height={48}
+              priority
               className="h-12 w-auto"
             />
           </Link>
@@ -140,6 +140,8 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 text-gray-700"
+            aria-label={isMobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>

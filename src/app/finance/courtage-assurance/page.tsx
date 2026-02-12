@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Shield, CheckCircle, ArrowRight, Building2, Car, Heart, Umbrella } from "lucide-react";
 
 const assurances = [
@@ -62,15 +63,15 @@ export default function CourtageAssurancePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Courtage <span className="text-[#B8923B]">Assurance</span>
+              Courtage <span className="hero-gold">Assurance</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Des solutions d&apos;assurance sur mesure pour protéger votre entreprise et vos actifs
             </motion.p>
@@ -107,9 +108,12 @@ export default function CourtageAssurancePage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=500&fit=crop"
                 alt="Courtage Assurance"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>

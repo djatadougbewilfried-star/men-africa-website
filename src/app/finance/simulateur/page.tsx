@@ -74,15 +74,15 @@ export default function SimulateurPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-playfair text-4xl md:text-5xl font-bold mb-4"
+            className="hero-title font-playfair text-4xl md:text-5xl font-bold mb-4"
           >
-            Simulateur de <span className="text-[#B8923B]">Financement</span>
+            Simulateur de <span className="hero-gold">Financement</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-white/80 max-w-2xl mx-auto"
+            className="hero-subtitle text-lg text-white/80 max-w-2xl mx-auto"
           >
             Estimez vos mensualités et le coût total de votre financement en quelques clics
           </motion.p>
@@ -294,7 +294,7 @@ export default function SimulateurPage() {
                     Demander une étude
                     <ArrowRight size={18} />
                   </Link>
-                  <a href="tel:+2250700000000" className="btn-outline flex-1 flex items-center justify-center gap-2">
+                  <a href="tel:+2250757740596" className="btn-outline flex-1 flex items-center justify-center gap-2">
                     <Phone size={18} />
                     Nous appeler
                   </a>

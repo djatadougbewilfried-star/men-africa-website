@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Wrench, CheckCircle, ArrowRight, Package, Hammer, Cog } from "lucide-react";
 
 const categories = [
@@ -53,15 +54,15 @@ export default function FournituresPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+              className="hero-title font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             >
-              Fournitures <span className="text-[#B8923B]">Techniques</span>
+              Fournitures <span className="hero-gold">Techniques</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl text-white/80"
+              className="hero-subtitle text-xl text-white/80"
             >
               Large gamme de matériaux et équipements pour professionnels du BTP
             </motion.p>
@@ -96,9 +97,12 @@ export default function FournituresPage() {
               </div>
             </div>
             <div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=500&fit=crop"
                 alt="Fournitures BTP"
+                width={600}
+                height={400}
+                unoptimized
                 className="w-full h-[400px] object-cover shadow-lg"
               />
             </div>
