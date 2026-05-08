@@ -133,7 +133,7 @@ export default function AProposPage() {
                     <Users className="text-[#B8923B]" size={20} />
                     <div>
                       <p className="text-white/70 text-sm">Gérant</p>
-                      <p className="font-medium">MENDO GABRIEL ARNOLD</p>
+                      <p className="font-medium">—</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">

@@ -93,19 +93,20 @@ const defaultTexts: SiteText[] = [
   { id: '1', section: 'Accueil', key: 'hero_title', value: 'MEN AFRICA COMPANY' },
   { id: '2', section: 'Accueil', key: 'hero_subtitle', value: 'BTP • BÉTON MANUFACTURÉ • IMPORT-EXPORT' },
   { id: '3', section: 'Accueil', key: 'hero_description', value: 'Votre partenaire de confiance pour tous vos projets de construction' },
-  { id: '4', section: 'Contact', key: 'phone', value: '+225 07 07 02 01 45' },
+  { id: '4', section: 'Contact', key: 'phone', value: '+225 07 00 00 00 00' },
   { id: '5', section: 'Contact', key: 'email', value: 'MENAFRICA@company-sites.net' },
   { id: '6', section: 'Contact', key: 'address', value: 'Cocody, Riviera Palmeraie, 21 BP 1831 Abidjan 21' },
 ];
 
 export default function AdminPage() {
-  // États principaux
-  const [isLoggedIn, setIsLoggedIn] = useState(() => getStoredSession() !== null);
-  const [currentUser, setCurrentUser] = useState<User | null>(() => getStoredSession());
+  // États principaux — initialisés côté serveur sans localStorage (évite hydration mismatch)
+  const [isHydrated, setIsHydrated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [users, setUsers] = useState<User[]>(() => getStoredData('users', defaultUsers));
-  const [products, setProducts] = useState<Product[]>(() => getStoredData('products', defaultProducts));
-  const [texts, setTexts] = useState<SiteText[]>(() => getStoredData('texts', defaultTexts));
+  const [users, setUsers] = useState<User[]>(defaultUsers);
+  const [products, setProducts] = useState<Product[]>(defaultProducts);
+  const [texts, setTexts] = useState<SiteText[]>(defaultTexts);
   const [contacts, setContacts] = useState<ContactRequest[]>([]);
   const [visitors, setVisitors] = useState<Visitor[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -123,6 +124,22 @@ export default function AdminPage() {
   const [newProduct, setNewProduct] = useState<Partial<Product>>({});
   const [newUser, setNewUser] = useState<Partial<User>>({});
   const [contactFilter, setContactFilter] = useState<'all' | 'contact' | 'devis' | 'rdv'>('all');
+
+  // Hydratation — chargement localStorage côté client uniquement
+  useEffect(() => {
+    const session = getStoredSession();
+    if (session) {
+      setIsLoggedIn(true);
+      setCurrentUser(session);
+    }
+    const storedUsers = getStoredData<User[]>('users', defaultUsers);
+    const storedProducts = getStoredData<Product[]>('products', defaultProducts);
+    const storedTexts = getStoredData<SiteText[]>('texts', defaultTexts);
+    setUsers(storedUsers);
+    setProducts(storedProducts);
+    setTexts(storedTexts);
+    setIsHydrated(true);
+  }, []);
 
   // Sauvegarder dans localStorage
   const saveData = useCallback((key: string, data: unknown) => {
@@ -298,6 +315,18 @@ export default function AdminPage() {
       minute: '2-digit'
     });
   };
+
+  // Écran de chargement (attendu hydratation client)
+  if (!isHydrated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#1B2B5A] to-[#0f1a38] flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="w-12 h-12 border-4 border-[#B8923B] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-white/70">Chargement...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Page de connexion
   if (!isLoggedIn) {

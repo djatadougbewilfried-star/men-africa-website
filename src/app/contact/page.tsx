@@ -11,6 +11,7 @@ export default function ContactPage() {
     email: "",
     phone: "",
     company: "",
+    type: "contact",
     service: "",
     message: "",
   });
@@ -24,6 +25,13 @@ export default function ContactPage() {
     setError("");
 
     try {
+      const serviceLabels: Record<string, string> = {
+        finance: "Finance et Investissement",
+        industrie: "Industrie et Béton",
+        commerce: "Commerce et Supply",
+        autre: "Autre demande",
+      };
+
       const { error: supabaseError } = await supabase
         .from("contacts")
         .insert([
@@ -32,8 +40,10 @@ export default function ContactPage() {
             email: formData.email,
             phone: formData.phone,
             company: formData.company,
-            service: formData.service,
+            type: formData.type,
+            subject: serviceLabels[formData.service] || formData.service || "Demande de contact",
             message: formData.message,
+            status: "new",
           },
         ]);
 
@@ -45,6 +55,7 @@ export default function ContactPage() {
         email: "",
         phone: "",
         company: "",
+        type: "contact",
         service: "",
         message: "",
       });
@@ -101,7 +112,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-[#1B2B5A] mb-1">Téléphone</h3>
                     <p className="text-gray-600">(+225) 27 24 33 64 04</p>
                     <p className="text-gray-600">(+225) 07 57 74 05 96</p>
-                    <p className="text-gray-600">(+225) 07 02 02 01 45</p>
+                    <p className="text-gray-600">(+225) 07 00 00 00 00</p>
                   </div>
                 </div>
 
@@ -252,6 +263,23 @@ export default function ContactPage() {
                           placeholder="Nom de votre entreprise"
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Type de demande *
+                      </label>
+                      <select
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 focus:border-[#B8923B] focus:outline-none transition-colors bg-white"
+                      >
+                        <option value="contact">Contact général</option>
+                        <option value="devis">Demande de devis</option>
+                        <option value="rdv">Prise de rendez-vous</option>
+                      </select>
                     </div>
 
                     <div>

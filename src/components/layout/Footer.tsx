@@ -113,7 +113,7 @@ export default function Footer() {
                 <div>
                   <p>(+225) 27 24 33 64 04</p>
                   <p>(+225) 07 57 74 05 96</p>
-                  <p>(+225) 07 02 02 01 45</p>
+                  <p>(+225) 07 00 00 00 00</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -185,7 +185,7 @@ export default function Footer() {
       <div className="border-t border-white/10 py-4">
         <div className="container-premium">
           <div className="text-center text-white/50 text-xs space-y-1">
-            <p>SARL U au Capital de 5 000 000 FCFA | Gérant : MENDO GABRIEL ARNOLD</p>
+            <p>SARL U au Capital de 5 000 000 FCFA</p>
             <p>RCCM : CI-ABJ-03-2024-B13-02779 | N° CC : 2401009 J | Régime : TEE</p>
             <p>Banque : BNI - Compte N° 000113950008</p>
           </div>
