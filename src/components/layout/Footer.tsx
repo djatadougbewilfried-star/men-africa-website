@@ -113,7 +113,7 @@ export default function Footer() {
                 <div>
                   <p>(+225) 27 24 33 64 04</p>
                   <p>(+225) 07 57 74 05 96</p>
-                  <p>(+225) 07 00 00 00 00</p>
+                  <p>(+225) 07 07 02 01 45</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">

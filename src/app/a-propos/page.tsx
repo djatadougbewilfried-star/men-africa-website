@@ -92,8 +92,8 @@ export default function AProposPage() {
               </h2>
               <div className="gold-line mb-6" />
               <p className="text-gray-600 mb-6 leading-relaxed">
-                <strong>MEN AFRICA COMPANY</strong> est une société de droit ivoirien (SARL U) 
-                au capital de <strong>5 000 000 FCFA</strong>, dirigée par <strong>M. MENDO GABRIEL ARNOLD</strong>.
+                <strong>MEN AFRICA COMPANY</strong> est une société de droit ivoirien (SARL U)
+                au capital de <strong>5 000 000 FCFA</strong>.
               </p>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Nous sommes un groupe multisectoriel opérant dans trois domaines stratégiques : 

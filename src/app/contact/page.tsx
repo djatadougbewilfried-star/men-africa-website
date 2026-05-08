@@ -112,7 +112,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-[#1B2B5A] mb-1">Téléphone</h3>
                     <p className="text-gray-600">(+225) 27 24 33 64 04</p>
                     <p className="text-gray-600">(+225) 07 57 74 05 96</p>
-                    <p className="text-gray-600">(+225) 07 00 00 00 00</p>
+                    <p className="text-gray-600">(+225) 07 07 02 01 45</p>
                   </div>
                 </div>
 
