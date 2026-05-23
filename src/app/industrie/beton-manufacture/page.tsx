@@ -282,7 +282,7 @@ export default function BetonManufacturePage() {
                   <Phone className="text-[#B8923B]" size={20} />
                   <div>
                     <p className="text-white/70 text-sm">Appelez-nous</p>
-                    <p className="font-medium">(+225) 07 57 74 05 96</p>
+                    <p className="font-medium">(+225) 07 02 02 01 45</p>
                   </div>
                 </div>
               </div>

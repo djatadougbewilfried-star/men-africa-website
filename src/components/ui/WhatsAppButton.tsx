@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
             Bonjour ! Comment pouvons-nous vous aider ?
           </p>
           <a
-            href="https://wa.me/2250707020145"
+            href="https://wa.me/2250702020145"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-medium"

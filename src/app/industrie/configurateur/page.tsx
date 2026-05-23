@@ -307,7 +307,7 @@ export default function ConfigurateurPage() {
                         Demander ce Devis
                         <ArrowRight size={18} />
                       </Link>
-                      <a href="tel:+2250757740596" className="btn-outline w-full flex items-center justify-center gap-2">
+                      <a href="tel:+2250702020145" className="btn-outline w-full flex items-center justify-center gap-2">
                         <Phone size={18} />
                         Commander par Téléphone
                       </a>

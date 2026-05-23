@@ -93,7 +93,7 @@ const defaultTexts: SiteText[] = [
   { id: '1', section: 'Accueil', key: 'hero_title', value: 'MEN AFRICA COMPANY' },
   { id: '2', section: 'Accueil', key: 'hero_subtitle', value: 'BTP • BÉTON MANUFACTURÉ • IMPORT-EXPORT' },
   { id: '3', section: 'Accueil', key: 'hero_description', value: 'Votre partenaire de confiance pour tous vos projets de construction' },
-  { id: '4', section: 'Contact', key: 'phone', value: '+225 07 07 02 01 45' },
+  { id: '4', section: 'Contact', key: 'phone', value: '+225 07 02 02 01 45' },
   { id: '5', section: 'Contact', key: 'email', value: 'MENAFRICA@company-sites.net' },
   { id: '6', section: 'Contact', key: 'address', value: 'Cocody, Riviera Palmeraie, 21 BP 1831 Abidjan 21' },
 ];

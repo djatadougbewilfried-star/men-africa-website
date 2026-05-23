@@ -32,12 +32,11 @@ export default function MentionsLegalesPage() {
               <li><strong>Gérant :</strong> —</li>
               <li><strong>Siège social :</strong> Cocody, Riviera Palmeraie, non loin de Da Carmen - 21 BP 1831 Abidjan 21, Côte d&apos;Ivoire</li>
               <li><strong>Siège technique :</strong> Yopougon, Cité ADO, Zone Industrielle, Ebimpé</li>
-              <li><strong>Téléphones :</strong> (+225) 27 24 33 64 04 / 07 57 74 05 96 / 07 07 02 01 45</li>
+              <li><strong>Téléphones :</strong> (+225) 27 24 33 64 04 / 07 02 02 01 45</li>
               <li><strong>Email :</strong> MENAFRICA@company-sites.net</li>
               <li><strong>RCCM :</strong> CI-ABJ-03-2024-B13-02779</li>
               <li><strong>N° Compte Contribuable :</strong> 2401009 J</li>
               <li><strong>Régime fiscal :</strong> TEE</li>
-              <li><strong>Banque :</strong> BNI - Compte N° 000113950008</li>
             </ul>
 
             <h2 className="font-playfair text-2xl font-semibold text-[#1B2B5A] mb-4">

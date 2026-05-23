@@ -268,7 +268,7 @@ export default function IndustriePage() {
                 Demander un Devis
               </Link>
               <a
-                href="tel:+2250757740596"
+                href="tel:+2250702020145"
                 className="px-8 py-4 bg-white/10 border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
@@ -504,7 +504,7 @@ export default function IndustriePage() {
               Demander un Devis Gratuit
             </Link>
             <a
-              href="https://wa.me/2250757740596"
+              href="https://wa.me/2250702020145"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-[#25D366] text-white rounded-lg font-semibold hover:bg-[#20b858] transition-colors flex items-center gap-2"
