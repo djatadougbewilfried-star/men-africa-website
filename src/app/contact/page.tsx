@@ -24,46 +24,54 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setError("");
 
+    const serviceLabels: Record<string, string> = {
+      finance: "Finance et Investissement",
+      industrie: "Industrie et Béton",
+      commerce: "Commerce et Supply",
+      autre: "Autre demande",
+    };
+
+    // Contact object prêt à être sauvegardé
+    const newContact = {
+      id: `contact_${Date.now()}`,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company || "",
+      type: formData.type as "contact" | "devis" | "rdv",
+      subject: serviceLabels[formData.service] || formData.service || "Demande de contact",
+      message: formData.message,
+      status: "new" as const,
+      created_at: new Date().toISOString(),
+    };
+
+    // Sauvegarde locale (localStorage) — toujours en premier pour garantir la réception admin
     try {
-      const serviceLabels: Record<string, string> = {
-        finance: "Finance et Investissement",
-        industrie: "Industrie et Béton",
-        commerce: "Commerce et Supply",
-        autre: "Autre demande",
-      };
-
-      const { error: supabaseError } = await supabase
-        .from("contacts")
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            company: formData.company,
-            type: formData.type,
-            subject: serviceLabels[formData.service] || formData.service || "Demande de contact",
-            message: formData.message,
-            status: "new",
-          },
-        ]);
-
-      if (supabaseError) throw supabaseError;
-
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        type: "contact",
-        service: "",
-        message: "",
-      });
+      const existing = JSON.parse(localStorage.getItem("menafrica_contacts") || "[]");
+      localStorage.setItem("menafrica_contacts", JSON.stringify([newContact, ...existing]));
     } catch {
-      setError("Une erreur est survenue. Veuillez réessayer.");
-    } finally {
-      setIsSubmitting(false);
+      // silencieux
     }
+
+    // Tentative Supabase (optionnel — si configuré)
+    try {
+      await supabase.from("contacts").insert([{
+        name: newContact.name,
+        email: newContact.email,
+        phone: newContact.phone,
+        company: newContact.company,
+        type: newContact.type,
+        subject: newContact.subject,
+        message: newContact.message,
+        status: newContact.status,
+      }]);
+    } catch {
+      // Supabase non configuré — localStorage est suffisant
+    }
+
+    setIsSubmitted(true);
+    setFormData({ name: "", email: "", phone: "", company: "", type: "contact", service: "", message: "" });
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

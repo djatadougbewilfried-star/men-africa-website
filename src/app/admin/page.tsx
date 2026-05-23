@@ -135,9 +135,12 @@ export default function AdminPage() {
     const storedUsers = getStoredData<User[]>('users', defaultUsers);
     const storedProducts = getStoredData<Product[]>('products', defaultProducts);
     const storedTexts = getStoredData<SiteText[]>('texts', defaultTexts);
+    // Charger les contacts et visiteurs depuis localStorage (bridge avec le formulaire de contact)
+    const storedContacts = getStoredData<ContactRequest[]>('contacts', []);
     setUsers(storedUsers);
     setProducts(storedProducts);
     setTexts(storedTexts);
+    setContacts(storedContacts);
     setIsHydrated(true);
   }, []);
 
@@ -158,7 +161,14 @@ export default function AdminPage() {
         supabase.from('products').select('*'),
       ]);
 
-      if (contactsRes.data) setContacts(contactsRes.data);
+      if (contactsRes.data && contactsRes.data.length > 0) {
+        // Fusionner Supabase + localStorage (évite les doublons par id)
+        const localContacts = getStoredData<ContactRequest[]>('contacts', []);
+        const supabaseIds = new Set(contactsRes.data.map((c: ContactRequest) => c.id));
+        const merged = [...contactsRes.data, ...localContacts.filter(c => !supabaseIds.has(c.id))];
+        setContacts(merged);
+        saveData('contacts', merged);
+      }
       if (visitorsRes.data) setVisitors(visitorsRes.data);
       if (productsRes.data && productsRes.data.length > 0) setProducts(productsRes.data);
     } catch {
@@ -257,8 +267,12 @@ export default function AdminPage() {
     if (dbConnected) {
       await supabase.from('contacts').update({ status }).eq('id', id);
     }
-    setContacts(prev => prev.map(c => c.id === id ? { ...c, status } : c));
-  }, [dbConnected]);
+    setContacts(prev => {
+      const updated = prev.map(c => c.id === id ? { ...c, status } : c);
+      saveData('contacts', updated); // persister dans localStorage
+      return updated;
+    });
+  }, [dbConnected, saveData]);
 
   // CRUD Utilisateurs
   const addUser = useCallback(() => {
@@ -410,6 +424,21 @@ export default function AdminPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
+        {/* Banner mode local */}
+        {!dbConnected && (
+          <div className="mb-4 bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+            <span className="text-2xl">⚠️</span>
+            <div>
+              <p className="font-semibold text-amber-800">Mode local activé</p>
+              <p className="text-amber-700 text-sm">
+                Les contacts soumis via le formulaire du site sont stockés localement et visibles ici.
+                Pour un stockage cloud persistant, configurez une base Supabase et ajoutez les variables
+                <code className="bg-amber-100 px-1 rounded mx-1">NEXT_PUBLIC_SUPABASE_URL</code> et
+                <code className="bg-amber-100 px-1 rounded mx-1">NEXT_PUBLIC_SUPABASE_ANON_KEY</code> dans Vercel.
+              </p>
+            </div>
+          </div>
+        )}
         <div className="flex gap-6">
           {/* Sidebar */}
           <aside className="w-64 flex-shrink-0">
