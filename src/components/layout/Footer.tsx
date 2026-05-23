@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, Facebook, Linkedin, Twitter, Instagram, ArrowRight, Loader2, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 export default function Footer() {
@@ -206,17 +206,13 @@ export default function Footer() {
               </Link>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+              <a href="https://www.facebook.com/share/1DX4bQYpJG/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook Men Africa Company" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
                 <Facebook size={18} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Twitter size={18} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
-                <Instagram size={18} />
+              <a href="https://www.tiktok.com/@men.africa.company?_r=1&_t=ZN-94BxD1osBSI" target="_blank" rel="noopener noreferrer" aria-label="TikTok Men Africa Company" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-[#B8923B] transition-colors">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/>
+                </svg>
               </a>
             </div>
           </div>
